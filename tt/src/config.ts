@@ -24,6 +24,7 @@ const envSchema = z.object({
   BOT_TOKEN: z.string().min(1, "BOT_TOKEN is required"),
   OWNER_ID: z.coerce.number().int().positive(),
   ALLOWED_USER_IDS: userIdList,
+  MONGODB_URI: z.string().min(1).default("mongodb://127.0.0.1:27017/truetune"),
   LOG_LEVEL: z
     .enum(["fatal", "error", "warn", "info", "debug", "trace"])
     .default("info"),
@@ -48,6 +49,7 @@ export const config = {
   botToken: env.BOT_TOKEN,
   ownerId: env.OWNER_ID,
   allowedUserIds: new Set<number>([env.OWNER_ID, ...env.ALLOWED_USER_IDS]),
+  mongodbUri: env.MONGODB_URI,
   logLevel: env.LOG_LEVEL,
   isProduction: env.NODE_ENV === "production",
 } as const;

@@ -1,12 +1,16 @@
 import { createBot } from "./bot/index.js";
+import { connectDatabase, disconnectDatabase } from "./db/connection.js";
 import { logger } from "./logger.js";
 
 async function main(): Promise<void> {
+  await connectDatabase();
+
   const bot = createBot();
 
   const shutdown = async (signal: string): Promise<void> => {
     logger.info({ signal }, "Shutting down");
     await bot.stop();
+    await disconnectDatabase();
     process.exit(0);
   };
 
