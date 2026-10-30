@@ -12,16 +12,21 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "gramjs:login": "tsx src/scripts/login.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@grammyjs/auto-retry": "^2.0.2",
     "dotenv": "^18.0.7",
     "grammy": "^1.46.0",
     "mongoose": "^9.11.1",
+    "music-metadata": "^12.1.0",
+    "node-id3": "^0.2.9",
     "pino": "^10.4.0",
+    "telegram": "^2.26.22",
     "zod": "^4.6.5"
   },
   "devDependencies": {
